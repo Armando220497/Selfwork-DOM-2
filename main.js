@@ -1,10 +1,11 @@
-function creaArticolo() {
+document.getElementById('creaArticoloButton').addEventListener('click', creaArticolo);
 
-    const titolo = document.getElementById('titolo').value;
-    const paragrafo = document.getElementById('paragrafo').value;
+function creaArticolo() {
+    const titolo = document.getElementById('titolo').value.trim();
+    const paragrafo = document.getElementById('paragrafo').value.trim();
 
     // Controlla se i campi sono vuoti
-    if (titolo.trim() === '' || paragrafo.trim() === '') {
+    if (titolo === '' || paragrafo === '') {
         alert('Per favore, compila sia il titolo che il paragrafo.');
         return;
     }
@@ -14,11 +15,12 @@ function creaArticolo() {
     let formatDate = date.toLocaleDateString();
 
     // Crea articolo
+    const articolo = document.getElementById('articolo');
     articolo.innerHTML = `
-    <p class="date">Data di pubblicazione: ${formatDate}</p>
-    <h2>${titolo}</h2>
-    <p>${paragrafo}</p>
-`;
+        <p class="date">Data di pubblicazione: ${formatDate}</p>
+        <h2>${titolo}</h2>
+        <p>${paragrafo}</p>
+    `;
 
     // Pulisci gli input
     document.getElementById('titolo').value = '';
